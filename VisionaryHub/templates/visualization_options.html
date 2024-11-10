@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Visualization</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 15px 0 5px;
+            color: #00796b;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #005f4f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Visualization</h1>
+        <p>Choose your preferred visualization type and the columns you want to plot. This step helps you to customize the chart and view data insights interactively.</p>
+        <form method="post" action="{{ url_for('visualization_options') }}">
+            <label for="chart_type">Chart Type:</label>
+            <select name="chart_type" required>
+                <option value="">Select Chart Type</option>
+                <option value="Bar">Bar Chart</option>
+                <option value="Line">Line Chart</option>
+                <option value="Scatter">Scatter Plot</option>
+                <option value="Histogram">Histogram</option>
+            </select>
+        
+            <label for="x_column">X-Axis:</label>
+            <select name="x_column" required>
+                {% for column in data_columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="y_column">Y-Axis (optional):</label>
+            <select name="y_column">
+                <option value="">None</option>
+                {% for column in data_columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+        
+            <button type="submit">Generate Chart</button>
+        </form>
+        
+        
+    </div>
+</body>
+</html>
