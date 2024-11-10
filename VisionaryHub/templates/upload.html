@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Dataset</title>
+    <style>
+        /* Global and Body Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #d0e4ff, #e0f7fa);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Heading and Description Styling */
+        h1 {
+            font-size: 2.5em;
+            color: #009688;
+            font-weight: 700;
+        }
+
+        .description {
+            font-size: 1.2em;
+            color: #555;
+            margin: 10px 0 20px;
+        }
+
+        /* Form Styling */
+        input[type="file"] {
+            padding: 12px;
+            font-size: 1em;
+            margin: 20px 0;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #00695c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Dataset</h1>
+        <p class="description">Upload a CSV or Excel file to explore and visualize your data. This tool allows you to analyze data in an interactive way with easy-to-use visualizations.</p>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload Dataset</button>
+        </form>
+        
+    </div>
+</body>
+</html>
 
