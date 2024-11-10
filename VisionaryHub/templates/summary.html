@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Summary</title>
+    <style>
+        /* Basic styling */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3e0e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Header and description */
+        h1 {
+            font-size: 2.2em;
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Section headers */
+        .section-title {
+            text-align: left;
+            font-size: 1.5em;
+            color: #00796b;
+            margin: 20px 0 10px;
+            font-weight: bold;
+        }
+
+        /* Table styling */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .summary-table th, .summary-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .summary-table th {
+            background-color: #009688;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Table container styling for spacing */
+        .table-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+            overflow-x: auto; /* Horizontal scroll for overflow */
+        }
+
+        /* Button styling */
+        button {
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #00695c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dataset Summary</h1>
+        <p class="description">
+            Here is a brief overview of your dataset, including the first few rows of data and basic statistics.
+            Click "Next" to proceed to visualization options.
+        </p>
+        
+        <!-- First 5 Rows Section with Horizontal Scroll -->
+        <div class="table-container">
+            <h2 class="section-title">First 5 Rows</h2>
+            <div style="overflow-x: auto;">
+                <table class="summary-table">
+                    {{ first_rows | safe }}
+                </table>
+            </div>
+        </div>
+
+        <!-- Basic Statistics Section with Horizontal Scroll -->
+        <div class="table-container">
+            <h2 class="section-title">Basic Statistics</h2>
+            <div style="overflow-x: auto;">
+                <table class="summary-table">
+                    {{ summary | safe }}
+                </table>
+            </div>
+        </div>
+
+        <!-- Next Button -->
+        <form action="/visualization_options" method="get">
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Output</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3e0e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.2em;
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            margin: 20px 0;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #00695c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chart Output</h1>
+        <p>Below is your generated chart based on the selected visualization options.</p>
+        
+        <div class="chart-container">
+            {{ chart_html|safe }}
+        </div>
+        
+        <div class="button-container">
+            <form action="{{ url_for('download_chart') }}" method="post">
+                <button type="submit">Download Chart</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
